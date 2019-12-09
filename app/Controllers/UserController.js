@@ -1,25 +1,47 @@
 import User from '../Models/UserModel'
 
-export const getAllMovie = async (req, res) => {
-    User.findAll().then(movies => {
-        res.send(movies)
+export const getAllUsers = async (req, res) => {
+    User.findAll().then(usuarios => {
+        res.send(usuarios)
     })
 }
 
-export const getMovieById = (req, res) => {
-    const id = req.params.id
+export const  login = async (req, res) => {
+    try {
+		let user = await UserModel.findOne({
+			username: req.body.username
+		})
+		if (!user) {
+			return res.status(400).send({
+				message: 'Usuario o contraseña incorrectos'
+			})
+		}
 
-    Movie.findOne({where: {id: id} }).then(movie => {
-        res.send(movie)
-    })
-}
+		// const token = jwt.sign({ _id: user._id }, 'missecretito', {
+		// 	expiresIn: '24h'
+		// });
+		// await UserModel.findOneAndUpdate({ _id: user._id }, {
+		// 	$push: {
+		// 		tokens: token
+		// 	}
+		// })
+		// const isMatch = await user.comparePassword(req.body.password)
+		// if (!isMatch) {
 
-export const getMovieByGenre = (req, res) => {
-    const genre = req.params.genre;
+		// 	return res.status(400).send({
+		// 		message: 'Usuario o contraseña incorrectos'
+		// 	})
+		// }
+		else {
+			res.send({
+				message: 'Bienvenido  ' + user.username, user, token
+			})
+		}
 
-    Movie.findAll({where: {genre: genre} }).then(movie => {
-        res.send(movie)
-    })
+	} catch (error) {
+		console.log(error);
+		res.status(500).send(error);
+	}
 }
 
 export const getUsuarioCarrito = (req, res) => {
