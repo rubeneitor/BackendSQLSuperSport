@@ -33,6 +33,10 @@ Producto.init(
         nombreCategoria: {
             type: Sequelize.STRING,
             allowNull: false
+        },
+
+        idCarrito: {
+            type: Sequelize.INTEGER,
         }
 
     }, 
@@ -48,11 +52,12 @@ Producto.init(
 Producto.sync()
 // .then (() => {
 //     return Producto.create({
-//         nombre: 'Zapatillas Puma Future',
-//         descripcion: 'material exterior cuero sintetico, revestimiento de tela',
+//         nombre: 'Uvex Air Wing',
+//         descripcion: 'Cierre con cordones',
 //         stock: 5,
-//         precio: 28,
-//         nombreCategoria: 'Futbol'
+//         precio: 38,
+//         nombreCategoria: 'Ciclismo',
+//         idCarrito: 1
        
 
 //     })

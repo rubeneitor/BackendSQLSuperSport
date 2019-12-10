@@ -6,6 +6,7 @@ export const getAllUsers = async (req, res) => {
     })
 }
 
+//Login
 export const  login = async (req, res) => {
     try {
 		let user = await UserModel.findOne({
@@ -42,6 +43,16 @@ export const  login = async (req, res) => {
 		console.log(error);
 		res.status(500).send(error);
 	}
+}
+
+//Perfil
+export const getUsuario = (req, res) => {
+	const username = req.params.username
+
+User.findOne({ where: {username: username} })
+		.then(user => res.send(user))
+		.catch(error => console.log(error))
+
 }
 
 export const getUsuarioCarrito = (req, res) => {
