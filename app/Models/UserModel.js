@@ -38,11 +38,8 @@ User.init(
         direccion: {
             type: Sequelize.STRING
         },
+       
         
-        idCarrito: {
-            type: Sequelize.INTEGER,
-            unique:true
-        }
     }, 
     {
         sequelize,

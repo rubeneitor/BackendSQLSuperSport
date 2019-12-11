@@ -1,0 +1,41 @@
+
+@baseUrl =http://localhost:3001
+@authorization = Bearer {{login.response.body.token}}
+
+
+### REGISTER
+# @name register
+POST {{baseUrl}}/auth/register
+Accept: application/json
+Content-Type: application/json
+
+{
+    "email": "juan2@geekshubs.om",
+    "password": "qwerty:A12",
+    "username":"garn2",
+    "nombre": "yepa"
+}
+
+
+
+### LOGIN
+# @name login
+POST http://localhost:3001/auth/login
+Accept: application/json
+Content-Type: application/json
+
+{
+    "email": "admin@gmail.com",
+    "password": "1234"
+}
+
+
+###
+GET {{baseUrl}}/auth/logout
+Accept: application/json
+Authorization: {{authorization}}
+
+###
+GET {{baseUrl}}/auth/users
+Accept: application/json
+Authorization: {{authorization}}
