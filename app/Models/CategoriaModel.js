@@ -3,7 +3,6 @@ import { Model, Sequelize } from 'sequelize';
 
 // Sequelize con SQLite configurado por nosotros
 import sequelize from '../sequelize';
-import Carrito from './CarritoModel';
 
 
 

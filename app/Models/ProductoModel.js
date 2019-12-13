@@ -4,6 +4,8 @@ import { Model, Sequelize, ForeignKeyConstraintError } from 'sequelize';
 // Sequelize con SQLite configurado por nosotros
 import sequelize from '../sequelize';
 
+import OrderModel from './OrderModel'
+
 
 class Producto extends Model { }
 
@@ -35,10 +37,6 @@ Producto.init(
             allowNull: false
         },
 
-        idCarrito: {
-            type: Sequelize.INTEGER,
-        }
-
     }, 
     {
         sequelize,
@@ -50,6 +48,9 @@ Producto.init(
 // Movie.hasOne(Genre);
 
 Producto.sync()
+// Producto.belongsToMany(OrderModel, {
+//     through: 'orderProducts'
+//   });
 // .then (() => {
 //     return Producto.create({
 //         nombre: 'Uvex Air Wing',

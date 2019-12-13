@@ -122,13 +122,13 @@ async function loginController(req, res, next) {
 
 // }
 
-export const getUsuarioCarrito = (req, res) => {
-	const idCarrito = req.params.id;
+// export const getUsuarioCarrito = (req, res) => {
+// 	const idCarrito = req.params.id;
 
-	User.findAll({ where: { idCarrito: idCarrito } }).then(usuario => {
-		res.send(usuario)
-	})
-}
+// 	User.findAll({ where: { idCarrito: idCarrito } }).then(usuario => {
+// 		res.send(usuario)
+// 	})
+// }
 
 export const setNewMovie = (req, res) => {
 	const movie = req.body

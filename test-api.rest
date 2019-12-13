@@ -25,8 +25,8 @@ Accept: application/json
 Content-Type: application/json
 
 {
-    "email": "admin@gmail.com",
-    "password": "1234"
+    "email": "admin2@gmail.com",
+    "password": "123456Aa"
 }
 
 

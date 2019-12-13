@@ -4,27 +4,27 @@ var authRouter = require('./routes/auth');
 
 import { getAllMovie, getUsuarioCarrito } from './Controllers/UserController';
 import { getAllProductos } from './Controllers/ProductoController';
-import { getAllCarrito } from './Controllers/CarritoController';
 import { getAllCategorias } from './Controllers/CategoriaController';
 import { getAllUsers } from './Controllers/UserController'
 import { login } from './Controllers/UserController'
 import { getProductoPorNombre } from './Controllers/ProductoController'
 import { getUsuario } from './Controllers/UserController'
 import { getProductosCarrito } from './Controllers/ProductoController'
+import { getOrderPorUser } from './Controllers/OrderController'
+import { añadirProducto } from './Controllers/ProductoController'
 
 
     
 const app = express();
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept"
-    );
-    res.header("Access-Control-Allow-Methods", "GET, POST,PUT,DELETE");
-    next();
-  });
+// Configurar cabeceras y cors
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+  res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+  next();
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -42,6 +42,8 @@ app.get('/productos', getAllProductos);
 app.get('/categoria', getAllCategorias)
 app.get('/producto/nombre/:nombre', getProductoPorNombre)
 // app.get('/productos/idCarrito/:idCarrito', getProductosCarrito)
+app.get('/orders/user/:idUser', getOrderPorUser)
+app.post('/addProduct', añadirProducto)
 
 
 export default app;
