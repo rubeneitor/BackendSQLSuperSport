@@ -1,3 +1,24 @@
+// 'use strict';
+// module.exports = (sequelize, DataTypes) => {
+//   const Order = sequelize.define(
+//     'OrderModel',
+//     {
+//         user_id: DataTypes.INTEGER,
+//         precio_total: DataTypes.FLOAT,
+//     },
+//     {},
+//   );
+//   Order.associate = function(Models) {
+//     // associations can be defined here
+//     Order.hasMany(Models.ProductoModel);
+//     // Order.hasOne(models.User);
+//   };
+//   Order.sync().catch(error =>
+//     console.error(`couldn't connect to database`, error),
+//   );
+//   return Order;
+// };
+
 import { Model, Sequelize } from 'sequelize';
 
 
@@ -21,6 +42,12 @@ Order.init(
     
         precio_total: {
             type: Sequelize.INTEGER
+        },
+
+        product_id: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+            unique:true
         }
         
 
@@ -36,7 +63,7 @@ Order.init(
  
 
 // Movie.hasOne(Genre);
-+
+// Order.belongsToMany(ProductoModel, {through: 'orderProducts', foreignKey: 'order_id'})
 Order.sync()
 
 

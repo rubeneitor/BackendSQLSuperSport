@@ -1,3 +1,30 @@
+
+// 'use strict';
+// module.exports = (sequelize, DataTypes) => {
+//   const Producto = sequelize.define(
+//     'ProductoModel',
+//     {
+//       name: DataTypes.STRING,
+//       stock: DataTypes.INTEGER,
+//       precio: DataTypes.FLOAT,
+//       descripcion: DataTypes.TEXT,
+//       imageUrl: DataTypes.STRING,
+//       createdAt: {
+//         type: DataTypes.DATE,
+//         defaultValue: () => new Date()
+//       }
+//     },
+//     {},
+//   );
+//   Producto.associate = function(Models) {
+//     // Product.hasOne(models.Category);
+//     Producto.belongsToMany(Models.OrderModel, {through: 'order_product'});
+//   };
+//   Producto.sync().catch(error =>
+//     console.error(`couldn't connect to database`, error),
+//   );
+//   return Producto;
+// };
 import { Model, Sequelize, ForeignKeyConstraintError } from 'sequelize';
 
 
@@ -37,6 +64,8 @@ Producto.init(
             allowNull: false
         },
 
+        imageUrl: Sequelize.STRING
+
     }, 
     {
         sequelize,
@@ -46,6 +75,8 @@ Producto.init(
 );
 
 // Movie.hasOne(Genre);
+
+// Producto.belongsToMany(OrderModel, {through: 'orderProducts', foreignKey: 'producto_id'})
 
 Producto.sync()
 // Producto.belongsToMany(OrderModel, {
