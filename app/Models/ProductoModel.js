@@ -64,7 +64,7 @@ Producto.init(
             allowNull: false
         },
 
-        imageUrl: Sequelize.STRING
+        img_url: Sequelize.STRING
 
     }, 
     {

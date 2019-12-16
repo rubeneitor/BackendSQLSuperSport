@@ -12,11 +12,14 @@ const {
   logoutController,
 } = require('../Controllers/UserController.js');
 
+require('../Controllers/ProductoController.js')
+
 /* GET users listing. */
 router.get('/users', getAllUsers);
 router.get('/perfil/:username', getUsuario);
 router.post('/register', registerController);
 router.post('/login', loginController);
+
 // router.get('/logout', authorizationMiddleware, logoutController);
 
 module.exports = router;

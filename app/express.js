@@ -11,7 +11,7 @@ import { getProductoPorNombre } from './Controllers/ProductoController'
 import { getUsuario } from './Controllers/UserController'
 import { getProductosCarrito } from './Controllers/ProductoController'
 import { getOrderPorUser } from './Controllers/OrderController'
-import { añadirProducto } from './Controllers/ProductoController'
+import { nuevoProducto } from './Controllers/ProductoController'
 
 
     
@@ -30,6 +30,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/auth', authRouter);
 
+
 //Mostramos usuarios
 // app.get('/usuarios', getAllUsers);
 // app.get('/usuario/:username', getUsuario)
@@ -43,7 +44,7 @@ app.get('/categoria', getAllCategorias)
 app.get('/producto/nombre/:nombre', getProductoPorNombre)
 // app.get('/productos/idCarrito/:idCarrito', getProductosCarrito)
 app.get('/orders/user/:idUser', getOrderPorUser)
-app.post('/addProduct', añadirProducto)
+app.post('/addProduct', nuevoProducto)
 
 
 export default app;
