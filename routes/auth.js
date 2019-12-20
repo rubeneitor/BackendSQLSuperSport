@@ -10,16 +10,13 @@ const {
   registerController,
   loginController,
   logoutController,
-} = require('../Controllers/UserController.js');
-
-require('../Controllers/ProductoController.js')
+} = require('../controllers/auth.js');
 
 /* GET users listing. */
-router.get('/users', getAllUsers);
-router.get('/perfil/:username', getUsuario);
+router.get('/usuarios', getAllUsers);
+router.get('/usuario/:username', getUsuario);
 router.post('/register', registerController);
 router.post('/login', loginController);
-
-// router.get('/logout', authorizationMiddleware, logoutController);
+router.get('/logout', authorizationMiddleware, logoutController);
 
 module.exports = router;

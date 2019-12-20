@@ -12,30 +12,26 @@ Content-Type: application/json
 {
     "email": "juan2@geekshubs.om",
     "password": "qwerty:A12",
-    "username":"garn2",
-    "nombre": "yepa"
+    "username":"garn2"
 }
 
 
 
 ### LOGIN
 # @name login
-POST http://localhost:3001/auth/login
+POST {{baseUrl}}/auth/login
 Accept: application/json
 Content-Type: application/json
 
 {
-    "email": "admin2@gmail.com",
-    "password": "123456Aa"
+    "email": "juan2@geekshubs.om",
+    "password": "qwerty:A12"
 }
 
 
 ###
-GET {{baseUrl}}/auth/logout
+GET {{baseUrl}}/ala/productos
 Accept: application/json
 Authorization: {{authorization}}
 
-###
-GET {{baseUrl}}/auth/users
-Accept: application/json
-Authorization: {{authorization}}
+
