@@ -64,9 +64,23 @@ async function nuevoProducto(req, res){
 	}
 }
 
+async function updateProduct (req, res) {
+	try {
+		
+		
+		const producto = await Product.update(req.body, {where: {id: req.params.id}})
+		console.log(producto);
+		
+		res.send(producto)
+	} catch (error) {
+		res.send(error)
+	}
+}
+
 module.exports = {
 	getAllProducts,
 	getProductPorNombre,
 	getProductsByCategory,
-	nuevoProducto
+	nuevoProducto,
+	updateProduct
 }
