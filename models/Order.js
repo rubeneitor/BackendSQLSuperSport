@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     // Order.hasMany(models.Product);
     Order.belongsToMany(models.Product,{ through: 'order_product' });
-    Order.hasOne(models.User);
+    Order.belongsTo(models.User);
   };
   Order.sync().catch(error =>
     console.error(`couldn't connect to database`, error),
