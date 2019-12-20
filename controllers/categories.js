@@ -11,6 +11,16 @@ async function getAllCategories(req, res){
     }
 }
 
+async function addCategory (req, res){
+    try {
+        const categoria = await Category.create(req.body)
+        res.send(categoria)
+    } catch (error) {
+        res.send(error)
+    }
+}
+
 module.exports = {
-   getAllCategories
+   getAllCategories,
+   addCategory
 }
