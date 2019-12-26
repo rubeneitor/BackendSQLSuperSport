@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   //   Category.belongsTo(models.Product);
 
   // };
-   Category.sync({force:true}).catch(error =>
+   Category.sync().catch(error =>
      console.error(`couldn't connect to database`, error),
    );
   return Category;

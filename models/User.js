@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         isEmail: true,
       },
-    
+    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     token: {
       type: DataTypes.STRING,
     },
-  }});
+  });
   User.associate = models => {
     User.hasMany(models.Order);
   };
