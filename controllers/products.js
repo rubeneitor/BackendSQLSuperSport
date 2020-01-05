@@ -2,17 +2,6 @@ const  {Product}  = require('../models');
 
 
 //Obtiene todos los productos
-// async function getAllProducts(req, res) {
-// 	try {
-// 		const productos = await Products.findAll();
-// 		console.log('yepaaa')
-// 		res.send(productos)
-	
-// 	} catch (error) {
-// 		res.send(error)
-// 	}
-// }
-
 async function getAllProducts(req, res) {
 try {
 	
@@ -49,6 +38,41 @@ async function getProductsByCategory(req, res){
 	}
 }
 
+//Busqueda de producto
+async function busquedaProducto(req, res) {
+
+    try {
+        const products = await Product.findAll({
+
+            where: {
+                [Op.or]: [{
+					nombre: {
+                            [Op.like]: `%${req.params.input}%`
+                        }
+                    },
+                    
+                    {
+                        nombreCategoria: {
+                            [Op.like]: `%${req.params.input}%`
+                        }
+                    },
+                    {
+                        descripcion: {
+                            [Op.like]: `%${req.params.input}%`
+                        }
+                    }
+                ]
+            }
+        });
+
+        res.status(200).send(products);
+    } catch (err) {
+        console.log(err);
+
+    }
+
+}
+
 //Añade un nuevo producto
 async function nuevoProducto(req, res){
 	try {
@@ -64,6 +88,7 @@ async function nuevoProducto(req, res){
 	}
 }
 
+//Actualiza un nuevo producto
 async function updateProduct (req, res) {
 	try {
 		
@@ -81,6 +106,7 @@ module.exports = {
 	getAllProducts,
 	getProductPorNombre,
 	getProductsByCategory,
+	busquedaProducto,
 	nuevoProducto,
 	updateProduct
 }

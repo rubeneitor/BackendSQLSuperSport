@@ -6,8 +6,8 @@ const {
     addCategory,
 } = require('../controllers/categories.js');
 
-/* GET users listing. */
-router.get('/categorias', getAllCategories);
+/* GET categories listing. */
+router.get('/', getAllCategories);
 router.post('/addCategory', addCategory)
 
 module.exports = router;

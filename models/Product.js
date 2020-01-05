@@ -36,6 +36,7 @@ module.exports = (sequelize, DataTypes) => {
   Product.associate = function (models) {
     // Product.hasOne(models.Category);
     Product.belongsToMany(models.Order, { through: 'order_product' });
+  
   };
 
 

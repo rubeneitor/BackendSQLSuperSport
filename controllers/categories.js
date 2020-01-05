@@ -11,6 +11,7 @@ async function getAllCategories(req, res){
     }
 }
 
+//Añade una nueva categoria
 async function addCategory (req, res){
     try {
         const categoria = await Category.create(req.body)
