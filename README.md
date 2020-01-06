@@ -2,7 +2,7 @@
 Este es el backend del proyecto E-commerce
 
 ## Pasos ejecutar
-1- Para ejecutar el back, primero hay que iniciar el servidor, en este caso, se ha utilizado Xampp.
+1- Para ejecutar el back, primero hay que iniciar el servidor, en este caso, se ha utilizado Xampp. <p>
 2- Una vez abierto el servidor se escribe el comando 'npm start'
 3- Automaticamente se ejecutaran los metodos del back junto con la base de datos
 
