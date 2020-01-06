@@ -4,11 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     nombre: DataTypes.STRING, 
     descripcion: DataTypes.STRING
   }, {});
-  // Category.associate = function(models) {
 
-  //   Category.belongsTo(models.Product);
-
-  // };
    Category.sync().catch(error =>
      console.error(`couldn't connect to database`, error),
    );

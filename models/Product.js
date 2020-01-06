@@ -26,15 +26,10 @@ module.exports = (sequelize, DataTypes) => {
       img_url_detalle1: DataTypes.STRING,
       img_url_detalle2: DataTypes.STRING
 
-      // createdAt: {
-      //   type: DataTypes.DATE,
-      //   defaultValue: () => new Date()
-      // }
     },
     
   );
   Product.associate = function (models) {
-    // Product.hasOne(models.Category);
     Product.belongsToMany(models.Order, { through: 'order_product' });
   
   };

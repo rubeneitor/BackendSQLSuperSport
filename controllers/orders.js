@@ -18,7 +18,7 @@ async function getAllOrders(req, res) {
     }
 }
 
-async function getInvoiceByIController(req, res, next) {
+async function getOrderByIdController(req, res) {
 
     try {
         const orders = await Order.findAll({
@@ -30,7 +30,7 @@ async function getInvoiceByIController(req, res, next) {
                 as: 'products'
             }]
         }, );
-        res.json(invoices);
+        res.json(orders);
     } catch (error) {
         console.error(error);
         res.status(500).json(error);
@@ -39,11 +39,11 @@ async function getInvoiceByIController(req, res, next) {
 
 }
 
-async function getInvoiceByProductController(req, res, next) {
+async function getOrderByProductController(req, res) {
 
     try {
         const productId = req.body.ProductId
-        const orders = await Invoice.findAll({
+        const orders = await Order.findAll({
             JOIN: 'order_product',
             ON: {
                 ProductId: productId
@@ -57,7 +57,7 @@ async function getInvoiceByProductController(req, res, next) {
     }
 }
 
-async function orderController(req, res, next) {
+async function orderController(req, res) {
 
     try {
         const body = req.body;
@@ -72,35 +72,14 @@ async function orderController(req, res, next) {
                 },
             }
         });
-console.log('asdafsdfasdfasdfsad' + products)
 
         const order = await Order.create({
             UserId: body.UserId,
             status: 'complete',
             totalPrice: req.body.totalPrice,
-/*             include: [{
-                model: Invoice_Product,
-                as: 'invoices',
-                Quantity: body.Quantity
-            }] */
         });
 
         await order.addProducts(products);
-
-        // const orderProducts = await Order_Product.findAll({
-        //     where: {
-        //         productId: {
-        //             [Op.in]: Object.keys(body.products.id),
-        //         },
-        //         orderId: order.id
-        //     }
-        // });
-
-        // await orderProducts.forEach(function(orderProducts) {
-        //     orderProducts.update({
-        //         Quantity: body.products[invoiceProduct.ProductId]
-        //     })
-        // })
     
         
         res.status(200).send(order);
@@ -123,7 +102,6 @@ async function getOrdersByUser(req, res){
 //Añadir un pedido
 async function addOrder(req, res){
     try {
-        // const producto = await Product.create(req.body.productos)
         const pedido = await Order.create(req.body)
         pedido.addProducts(req.body.productos)
         res.send(pedido)
@@ -139,7 +117,7 @@ module.exports = {
    getAllOrders,
    getOrdersByUser,
    addOrder,
-   getInvoiceByIController,
-   getInvoiceByProductController,
+   getOrderByIdController,
+   getOrderByProductController,
    orderController
 }

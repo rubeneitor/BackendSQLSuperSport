@@ -4,11 +4,7 @@ const  {Product}  = require('../models');
 //Obtiene todos los productos
 async function getAllProducts(req, res) {
 try {
-	
-
-	
 	const producto = await Product.findAll();
-	console.log(producto)
 	res.send(producto)
 	
 } catch (error) {
@@ -91,10 +87,8 @@ async function nuevoProducto(req, res){
 //Actualiza un nuevo producto
 async function updateProduct (req, res) {
 	try {
-		
-		
+	
 		const producto = await Product.update(req.body, {where: {id: req.params.id}})
-		console.log(producto);
 		
 		res.send(producto)
 	} catch (error) {
